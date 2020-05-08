@@ -1,0 +1,12 @@
+.App {
+  background-color: #E2E2E2;
+  height: 100%;
+  text-align: center;
+  width: 100%;
+}
+
+.stat-calculator {
+  display: flex;
+  flex-direction: column;
+  align-items: center;
+}
