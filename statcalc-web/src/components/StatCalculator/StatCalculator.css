@@ -1,0 +1,15 @@
+.pkmn-img-container {
+  background-color: rgba(46, 46, 46, 0.3);
+  width: 75px;
+  height: auto;
+  border-radius: 50%;
+}
+
+.no-pkmn-select {
+  opacity: 0.5;
+}
+
+.pkmn-img:not(.no-pkmn-select) {
+  width: 100%;
+  height: auto;
+}

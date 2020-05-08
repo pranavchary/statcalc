@@ -2,6 +2,9 @@
 # backend
 /statcalc-back/sqlConfig.js
 
+# frontend
+/statcalc-web/src/assets/pokemon-images
+
 # dependencies
 /statcalc-back/node_modules
 /statcalc-web/node_modules

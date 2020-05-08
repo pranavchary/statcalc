@@ -1,29 +1,40 @@
 import React, { useState, useEffect } from 'react';
 import Header from './common/header/Header';
 import StatCalculator from './components/StatCalculator/StatCalculator';
-import { getStatList } from './common/requests';
+import { getStatList, getNatureList, getPokemonList } from './common/requests';
 
 import './App.css';
 
 const App = () => {
   const [statList, setStatList] = useState([]);
   const [natureList, setNatureList] = useState([]);
+  const [pokemonList, setPokemonList] = useState([]);
 
   useEffect(() => {
-    const getStatsAsync = async () => {
-      let values = await getStatList();
-      if (values != null) {
-        setStatList(values);
+    const getInfoAsync = async () => {
+      let stats = await getStatList();
+      if (stats != null) {
+        setStatList(stats);
+      }
+
+      let natures = await getNatureList();
+      if (natures != null) {
+        setNatureList(natures);
+      }
+
+      let pokemon = await getPokemonList();
+      if (pokemon != null) {
+        setPokemonList(pokemon);
       }
     }
 
-    getStatsAsync();
+    getInfoAsync();
   }, [])
 
   return (
     <div className="App">
       <Header title="StatCalc" subtitle="for Pokèmon Sword & Shield" />
-      <StatCalculator statList={ statList } />
+      <StatCalculator statList={ statList } natureList={ natureList } pokemonList={ pokemonList } />
     </div>
   );
 }

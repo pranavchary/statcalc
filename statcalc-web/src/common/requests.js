@@ -10,3 +10,15 @@ export const getStatList = async () => {
   .then(res => res.data)
   .catch(err => null);
 }
+
+export const getNatureList = async () => {
+  return request.get('/Natures')
+  .then(res => res.data)
+  .catch(err => null);
+}
+
+export const getPokemonList = async () => {
+  return request.get('/Pokemon')
+  .then(res => res.data)
+  .catch(err => null);
+}

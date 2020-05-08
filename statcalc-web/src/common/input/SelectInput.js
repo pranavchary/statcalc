@@ -28,6 +28,7 @@ const SelectInput = (props) => {
   const handleSelection = (option) => {
     setSelected(option);
     setOpened(false);
+    props.onSelect(option);
   }
 
   const renderOptions = () => {
@@ -68,7 +69,8 @@ const SelectInput = (props) => {
 SelectInput.defaultProps = {
   selectTitle: 'Select',
   width: '150px',
-  height: '25px'
+  height: '25px',
+  onSelect: () => { }
 }
 
 export default SelectInput;

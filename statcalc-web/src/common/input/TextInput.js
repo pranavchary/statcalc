@@ -22,6 +22,7 @@ const TextInput = (props) => {
         className="text-input"
         name={props.name}
         id={props.id}
+        readOnly={props.readOnly}
         value={props.defaultValue}
         onChange={ (event) => props.onChange(event) }
         onFocus={ (event) => props.onFocus(event) }
@@ -40,6 +41,7 @@ TextInput.defaultProps = {
   height: '25px',
   maxLength: 100,
   name: 'input',
+  readOnly: false,
   label: '',
   defaultValue: '',
   onChange: () => { },
