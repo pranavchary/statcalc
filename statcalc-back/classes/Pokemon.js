@@ -4,6 +4,7 @@ class Pokemon {
     this.natDexNumber = natDexNumber;
     this.name = name;
     this.stats = {
+      hp,
       atk,
       def,
       spAtk,

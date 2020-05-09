@@ -17,9 +17,9 @@ const SelectInput = (props) => {
 
   useEffect(() => {
     if (opened && dropdownHeight < dropdownMaxHeight) {
-      setTimeout(() => { setDropdownHeight(dropdownHeight + 1) }, 1);
+      setTimeout(() => { setDropdownHeight(dropdownHeight + 1) }, 0.5);
     } else if (!opened && dropdownHeight > 0) {
-      setTimeout(() => { setDropdownHeight(dropdownHeight - 1) }, 1);
+      setTimeout(() => { setDropdownHeight(dropdownHeight - 1) }, 0.5);
     } else {
       clearTimeout();
     }

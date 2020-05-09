@@ -4,6 +4,7 @@ const cors = require('cors');
 const mysql = require('mysql');
 const bp = require('body-parser');
 
+const Stat = require('./classes/Stat');
 const Nature = require('./classes/Nature');
 const Pokemon = require('./classes/Pokemon');
 
@@ -28,7 +29,7 @@ app.get('/StatNames', (req, res) => {
     if (rows.length >= 1) {
       let data = rows[0];
       for (let i in data) {
-        stats.push(data[i].Name);
+        stats.push(new Stat(data[i].StatID, data[i].Name, data[i].Abbr));
       }
     }
     res.send(stats);

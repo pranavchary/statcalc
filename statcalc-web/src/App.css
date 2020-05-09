@@ -5,6 +5,10 @@
   width: 100%;
 }
 
+.App > div {
+  width: 100%;
+}
+
 .stat-calculator {
   display: flex;
   flex-direction: column;

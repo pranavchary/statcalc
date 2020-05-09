@@ -1,15 +1,36 @@
+.stat-calculator-head {
+  display: flex;
+  align-items: center;
+  justify-content: space-evenly;
+  width: 100%;
+  margin-bottom: 20px;
+}
+
+.pokemon-selection {
+  display: flex;
+}
+
 .pkmn-img-container {
   background-color: rgba(46, 46, 46, 0.3);
   width: 75px;
-  height: auto;
+  height: 75px;
   border-radius: 50%;
+  overflow: hidden;
 }
 
 .no-pkmn-select {
   opacity: 0.5;
+  width: 75px;
+  height: 75px;
 }
 
 .pkmn-img:not(.no-pkmn-select) {
   width: 100%;
   height: auto;
+}
+
+.error-msg {
+  font-weight: bold;
+  margin-top: 10px;
+  color: #e84118;
 }
