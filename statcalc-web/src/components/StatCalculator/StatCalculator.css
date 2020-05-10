@@ -11,11 +11,14 @@
 }
 
 .pkmn-img-container {
-  background-color: rgba(46, 46, 46, 0.3);
+  background-color: rgba(46, 46, 46, 0.1);
   width: 75px;
   height: 75px;
   border-radius: 50%;
-  overflow: hidden;
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  /* overflow: hidden; */
 }
 
 .no-pkmn-select {
@@ -25,7 +28,7 @@
 }
 
 .pkmn-img:not(.no-pkmn-select) {
-  width: 100%;
+  width: 120%;
   height: auto;
 }
 

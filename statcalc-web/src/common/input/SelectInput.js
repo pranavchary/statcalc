@@ -49,7 +49,7 @@ const SelectInput = (props) => {
           height: props.height,
           borderBottomLeftRadius: opened ? 0 : undefined
         }}>
-        <div className="selected-value">
+        <div className="selected-value" onClick={ () => setOpened(!opened) }>
           { selected }
           <div className="option-list" style={{
             top: props.height,
