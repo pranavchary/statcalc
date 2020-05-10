@@ -77,6 +77,22 @@ app.get('/Pokemon', (req, res) => {
   });
 });
 
+app.post('/LoginAdmin', (req, res) => {
+  let sql = 'CALL LoginAdmin(?);';
+  let values = [req.body.username];
+  let options = { sql, values };
+  conn.query(options, (err, rows) => {
+    if (err)
+      throw err;
+    if (rows.length >= 1) {
+       let data = rows[0][0];
+       res.send(data.UserExists === 1);
+    } else {
+      res.send(false);
+    }
+  });
+});
+
 app.listen(3001, () => {
   console.log('Server running on port 3001');
 });

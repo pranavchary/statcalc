@@ -1,5 +1,8 @@
 import React, { useState, useEffect } from 'react';
+import { BrowserRouter as Router, Route, Link, Switch } from 'react-router-dom';
 import Header from './common/header/Header';
+import Admin from './components/Admin/Admin';
+import AddPokemon from './components/Admin/AddPokemon'
 import StatCalculator from './components/StatCalculator/StatCalculator';
 import { getStatList, getNatureList, getPokemonList } from './common/requests';
 
@@ -32,10 +35,23 @@ const App = () => {
   }, [])
 
   return (
-    <div className="App">
-      <Header title="StatCalc" subtitle="for Pokèmon Sword & Shield" />
-      <StatCalculator statList={ statList } natureList={ natureList } pokemonList={ pokemonList } />
-    </div>
+    <Router>
+      <div className="App">
+        <Header title="StatCalc" subtitle="for Pokèmon Sword & Shield" />
+        <Switch>
+          <Route exact path="/" render={ (routeProps) => (
+            <StatCalculator
+              { ...routeProps }
+              statList={ statList }
+              natureList={ natureList }
+              pokemonList={ pokemonList }
+            />
+          ) } />
+          <Route path="/admin" render={ (routeProps) => <Admin { ...routeProps } /> } />
+          <Route path="/addmon" render={ (routeProps) => <AddPokemon { ...routeProps} /> } />
+        </Switch>
+      </div>
+    </Router>
   );
 }
 

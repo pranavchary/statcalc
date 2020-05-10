@@ -22,3 +22,15 @@ export const getPokemonList = async () => {
   .then(res => res.data)
   .catch(err => null);
 }
+
+export const loginAdmin = async (username) => {
+  return request.post('/LoginAdmin', { username })
+  .then(res => res.data)
+  .catch(err => false);
+}
+
+export const validateAdmin = async (username) => {
+  return request.post('/ValidateAdmin', { username })
+  .then(res => res.data)
+  .catch(err => false);
+}

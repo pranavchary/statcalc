@@ -146,7 +146,7 @@
 .text-input:valid:not([value=""]) + .text-input-label {
   color: #40739e;
   font-size: 60%;
-  margin-top: -15%;
+  margin-top: -20px;
   transition: 0.2s ease-in;
   -webkit-transition: 0.2s ease-in;
 }

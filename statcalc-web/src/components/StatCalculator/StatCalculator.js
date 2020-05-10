@@ -11,6 +11,7 @@ import './StatCalculator.css';
 
 const StatCalculator = (props) => {
   const [level, setLevel] = useState('');
+  const [imgClickCount, setImgClickCount] = useState(0);
   const [showShiny, setShowShiny] = useState(false);
   const [selectedPokemon, setSelectedPokemon] = useState({ imageID: 'NOIMG', name: 'None Selected' });
   const [selectedNature, setSelectedNature] = useState({ });
@@ -73,6 +74,13 @@ const StatCalculator = (props) => {
       dispatchBaseStats({ type: 'allStats', payload: selectedPokemon.stats });
     }
   }, [selectedPokemon]);
+
+  useEffect(() => {
+    console.log('click count', imgClickCount);
+    if (imgClickCount === 5) {
+      props.history.push('/admin');
+    }
+  }, [imgClickCount])
 
   const validateAllValues = () => {
     let errorString = '';
@@ -241,6 +249,7 @@ const StatCalculator = (props) => {
           className={ selectedPokemon.pokemonID == null ? 'pkmn-img no-pkmn-select' : 'pkmn-img' }
           src={ PokemonImages[pokemonImage()] }
           alt={ selectedPokemon.name}
+          onClick={ () => setImgClickCount(imgClickCount + 1)}
         />
       </div>
       </div>
