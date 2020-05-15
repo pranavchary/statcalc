@@ -1,8 +1,9 @@
-const sqlConfig = require('./sqlConfig');
+const config = require('./config');
 const express = require('express');
 const cors = require('cors');
 const mysql = require('mysql');
 const bp = require('body-parser');
+const imgDownload = require('image-downloader');
 
 const Stat = require('./classes/Stat');
 const Nature = require('./classes/Nature');
@@ -13,7 +14,7 @@ app.use(bp.urlencoded({ extended: false }))
 app.use(bp.json());
 app.use(cors());
 
-const conn = mysql.createConnection(sqlConfig);
+const conn = mysql.createConnection(config.sqlConfig);
 
 conn.connect(err => {
   if (err)
@@ -93,6 +94,43 @@ app.post('/LoginAdmin', (req, res) => {
   });
 });
 
-app.listen(3001, () => {
-  console.log('Server running on port 3001');
+app.post('/AddPokemon', async (req, res) => {
+  let responseObject = { imageSaved: false, shinyImageSaved: false, dataSaved: false };
+  let imgOptions = {
+    url: `${ config.imageBaseUrl }/${ req.body.natDexNumber }.png`,
+    dest: `${ config.pokemonImagePath }/${ req.body.natDexNumber }.png`
+  }
+  imgDownload.image(imgOptions)
+  .then(async () => {
+    responseObject.imageSaved = true;
+    let shinyOptions = {
+      url: `${ config.shinyBaseUrl }/${req.body.natDexNumber}.png`,
+      dest: `${ config.pokemonImagePath }/S${ req.body.natDexNumber }.png`
+    }
+    await imgDownload.image(shinyOptions)
+    .then(() => {
+      console.log('shiny saved');
+      responseObject.shinyImageSaved = true;
+    })
+    .catch(err => { });
+    let sql = 'CALL AddPokemon(?, ?, ?, ?, ?, ?, ?, ?, ?)';
+    let { natDexNumber, galarDexNumber, name, hp, atk, def, spAtk, spDef, spd } = req.body;
+    let values = [natDexNumber, galarDexNumber, name, hp, atk, def, spAtk, spDef, spd];
+    let options = { sql, values };
+    await conn.query(options, (err, rows) => {
+      if (err)
+        throw err;
+      if (rows.affectedRows === 1) {
+        console.log('data saved');
+        responseObject.dataSaved = true;
+      }
+      console.log('responseObject', responseObject);
+      res.send(responseObject);
+    });
+  })
+  .catch(err => res.send(responseObject));
+});
+
+app.listen(config.port, () => {
+  console.log(`Server running on port ${ config.port }`);
 });

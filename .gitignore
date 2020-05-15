@@ -1,6 +1,6 @@
 # See https://help.github.com/articles/ignoring-files/ for more about ignoring files.
 # backend
-/statcalc-back/sqlConfig.js
+/statcalc-back/config.js
 
 # frontend
 /statcalc-web/src/assets/pokemon-images

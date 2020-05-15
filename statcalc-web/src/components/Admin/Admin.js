@@ -9,6 +9,13 @@ const buttonStyles = {
   width: '20%'
 }
 
+const adminStyle = {
+  display: 'flex',
+  flexDirection: 'column',
+  alignItems: 'center',
+  justifyContent: 'center'
+}
+
 const Admin = (props) => {
   const [username, setUsername] = useState('');
   const handleSubmit = async () => {
@@ -20,7 +27,7 @@ const Admin = (props) => {
     }
   }
   return (
-    <div className="admin" style={{ display: 'flex', flexDirection: 'column', alignItems: 'center', justifyContent: 'center' }}>
+    <div className="admin" style={adminStyle}>
       <TextInput
         id="username"
         maxLength={25}

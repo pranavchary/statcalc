@@ -36,6 +36,7 @@ const TextInput = (props) => {
 }
 
 TextInput.defaultProps = {
+  autoFocus: false,
   type: 'text',
   width: '100px',
   height: '25px',

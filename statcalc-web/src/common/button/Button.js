@@ -7,7 +7,7 @@ const Button = (props) => {
     <div
       className="button"
       style={ props.buttonStyles }
-      onClick={ () => props.onClick() }
+      onClick={ (event) => props.onClick(event) }
     >
       <div className="button-text" style={ props.textStyles }>{ props.text }</div>
     </div>

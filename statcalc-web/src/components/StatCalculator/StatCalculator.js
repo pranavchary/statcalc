@@ -76,7 +76,6 @@ const StatCalculator = (props) => {
   }, [selectedPokemon]);
 
   useEffect(() => {
-    console.log('click count', imgClickCount);
     if (imgClickCount === 5) {
       props.history.push('/admin');
     }

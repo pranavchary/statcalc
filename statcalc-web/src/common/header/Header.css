@@ -17,6 +17,7 @@
 }
 
 .title {
+  cursor: pointer;
   font-size: 150%;
   font-weight: bolder;
   margin: 0 5px;

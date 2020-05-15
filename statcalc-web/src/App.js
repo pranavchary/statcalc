@@ -1,5 +1,5 @@
 import React, { useState, useEffect } from 'react';
-import { BrowserRouter as Router, Route, Link, Switch } from 'react-router-dom';
+import { BrowserRouter as Router, Route, Switch } from 'react-router-dom';
 import Header from './common/header/Header';
 import Admin from './components/Admin/Admin';
 import AddPokemon from './components/Admin/AddPokemon'

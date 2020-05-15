@@ -34,3 +34,9 @@ export const validateAdmin = async (username) => {
   .then(res => res.data)
   .catch(err => false);
 }
+
+export const addPokemon = async (pkmnObj) => {
+  return request.post('/AddPokemon', pkmnObj)
+  .then(res => res.data)
+  .catch(err => false)
+}

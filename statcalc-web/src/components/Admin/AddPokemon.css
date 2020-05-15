@@ -1,0 +1,13 @@
+.add-mon-container {
+  display: flex;
+  flex-direction: column;
+  align-items: center;
+}
+
+.add-mon-subtitle {
+  font-style: italic;
+  font-size: 50%;
+  color: #999999;
+  font-weight: 400;
+  margin-bottom: 30px;
+}
